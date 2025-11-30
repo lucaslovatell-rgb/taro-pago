@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tarô do Destino - Leitura Paga</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="manifest" href="manifest.json"/>
+  <meta name="theme-color" content="#1a0033"/>
+</head>
+<body>
+  <div class="container">
+    <h1>Tarô do Destino</h1>
+    <p class="subtitle">Leitura profissional de 3 cartas - Passado • Presente • Futuro</p>
+
+    <div id="question-box">
+      <input type="text" id="question" placeholder="Qual é a sua pergunta?" />
+      <button id="start">Começar Leitura</button>
+    </div>
+
+    <div id="deck" class="deck hidden">
+      <div class="card back" data-pos="0"></div>
+      <div class="card back" data-pos="1"></div>
+      <div class="card back" data-pos="2"></div>
+    </div>
+
+    <div id="reading" class="reading hidden">
+      <div class="positions">
+        <div>Passado</div>
+        <div>Presente</div>
+        <div>Futuro</div>
+      </div>
+      <div id="cards-display"></div>
+      <div id="interpretation"></div>
+      <button id="new-reading">Nova Leitura</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

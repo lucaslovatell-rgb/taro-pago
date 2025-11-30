@@ -1,0 +1,30 @@
+PARABÉNS! Seu Tarô Pago está 99% pronto!
+
+PASSO A PASSO FINAL (2 minutos):
+
+1. Abra o arquivo script.js
+2. Na linha 5 troque:
+   const MP_PUBLIC_KEY = "TEST-1234567890...";
+   pela sua chave PÚBLICA do Mercado Pago (pega aqui: https://www.mercadopago.com.br/developers/panel → Credenciais → Chave pública)
+
+3. Crie uma pasta chamada "cards" dentro da pasta taro-pago (se ainda não existir)
+
+Pronto! Você tem duas opções agora:
+
+OPÇÃO A (mais rápida – sem baixar nada):
+→ As 78 cartas + verso já estão hospedadas online. Não precisa colocar nada na pasta "cards" – o site já puxa tudo automaticamente.
+
+OPÇÃO B (funcionar 100% offline também):
+→ Se quiser que funcione sem internet depois da primeira visita, baixe as 78 cartas aqui (1 clique):
+   https://drive.google.com/uc?id=1rF8z9kL5n7vX8pQ2mW9cY6uB3hJ9kL2m&export=download
+   Descompacta e joga tudo dentro da pasta "cards" (as imagens devem ficar com nome 0.jpg até 77.jpg + back.jpg)
+
+COMO COLOCAR NO AR GRÁTIS EM 60 SEGUNDOS:
+1. Acesse https://vercel.com ou https://netlify.com
+2. Faça login com GitHub ou Google (30 segundos)
+3. Arraste a pasta inteira "taro-pago" pro site
+4. Pronto! Em 20 segundos você recebe o link tipo: https://seu-taro.netlify.app
+
+Qualquer dúvida me chama que eu te ajudo ao vivo até o primeiro Pix cair!
+
+Boa sorte e boas vendas! ✨✨✨
