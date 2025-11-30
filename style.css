@@ -5,112 +5,66 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
+  background: radial-gradient(circle at center, #2a1b3d 0%, #0d0b1c 100%);
 }
 
-/* Fundo místico */
-.background {
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: radial-gradient(circle at center, #2a1b3d 0%, #0d0b1c 100%);
-  z-index: -3;
-}
+/* Fundo com estrelas animadas */
 .stars {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: transparent url('https://i.ibb.co/0jQZrZc/stars.png') repeat;
-  animation: estrelas 120s linear infinite;
-  opacity: 0.6;
-  z-index: -2;
+  background: transparent url('https://i.ibb.co/4pXJ0kP/stars.png') repeat;
+  animation: estrelas 200s linear infinite;
+  opacity: 0.7;
+  z-index: -1;
 }
 @keyframes estrelas { from { background-position: 0 0; } to { background-position: 1000px 1000px; } }
 
-/* Cabeçalho */
-header {
-  text-align: center;
-  padding: 60px 20px 40px;
-  position: relative;
-}
+/* Título dourado brilhante */
 header h1 {
   font-family: 'Cinzel', serif;
-  font-size: 4.5rem;
+  font-size: 5.5rem;
+  text-align: center;
+  padding-top: 80px;
   background: linear-gradient(90deg, #d4af37, #fff, #d4af37);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 0 30px rgba(212,175,55,0.5);
+  text-shadow: 0 0 40px rgba(212,175,55,0.6);
 }
 .subtitle {
-  font-size: 1.5rem;
-  margin-top: 15px;
+  text-align: center;
+  font-size: 1.8rem;
+  margin: 20px 0 60px;
   opacity: 0.9;
 }
 
-/* Botões */
+/* Botão principal */
 .btn-mistico {
-  margin-top: 50px;
-  padding: 18px 40px;
-  font-size: 1.4rem;
+  display: block;
+  margin: 0 auto;
+  padding: 20px 50px;
+  font-size: 1.6rem;
   background: linear-gradient(45deg, #8B5A96, #D4AF37);
   border: none;
   border-radius: 50px;
   color: white;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(139,90,150,0.6);
+  box-shadow: 0 15px 40px rgba(139,90,150,0.6);
   transition: all 0.4s;
 }
 .btn-mistico:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(212,175,55,0.6);
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 25px 60px rgba(212,175,55,0.7);
 }
-.preco { margin-top: 20px; font-size: 1.3rem; opacity: 0.8; }
-
-/* Cartas */
-#baralho {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin: 50px auto;
-  max-width: 1000px;
-  perspective: 1000px;
-}
-.carta {
-  width: 120px;
-  height: 180px;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.6s;
-  transform-style: preserve-3d;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-  border: 3px solid #d4af37;
-}
-.carta:hover { transform: translateY(-15px) scale(1.05); box-shadow: 0 20px 40px rgba(212,175,55,0.5); }
-.frente { background: #0f0a1c url('https://i.ibb.co/0jQZrZc/back-card.jpg') center/cover; }
-.verso { 
-  background: white;
-  backface-visibility: hidden;
-  transform: rotateY(180deg);
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  border-radius: 12px;
-}
-.carta.virada { transform: rotateY(180deg); }
-
-#cartas-escolhidas {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin: 60px 0;
-  flex-wrap: wrap;
-}
-#resultado {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 30px;
-  background: rgba(20,10,40,0.6);
-  border-radius: 20px;
-  border: 1px solid #d4af37;
+.preco {
   text-align: center;
+  margin-top: 25px;
   font-size: 1.4rem;
-  line-height: 1.8;
+  opacity: 0.8;
+}
+
+/* Responsivo rápido */
+@media (max-width: 600px) {
+  header h1 { font-size: 3.5rem; }
+  .btn-mistico { padding: 16px 35px; font-size: 1.4rem; }
 }
