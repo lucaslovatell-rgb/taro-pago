@@ -5,38 +5,42 @@ function iniciarLeitura() {
   const baralho = document.getElementById("baralho");
   baralho.innerHTML = "";
 
-  // Cria 15 cartas viradas pra escolher (depois a gente coloca as 78)
-  for(let i = 0; i < 15; i++) {
+  // 21 cartas viradas pra escolher (depois vira 78)
+  for(let i = 0; i < 21; i++) {
     const carta = document.createElement("div");
     carta.className = "carta";
-    carta.innerHTML = `<div class="frente"></div><div class="verso"><img src="https://i.ibb.co/5YBBM3P/back.jpg" alt="verso"></div>`;
-    carta.onclick = () => escolherCarta(carta, i);
+    carta.innerHTML = `
+      <div class="frente"></div>
+      <div class="verso">
+        <img src="https://raw.githubusercontent.com/lucaslovatell-rgb/taro-pago/main/back.jpg" alt="Carta do Tarô">
+      </div>
+    `;
+    carta.onclick = () => virarCarta(carta, i);
     baralho.appendChild(carta);
   }
 }
 
-let escolhidas = [];
+let selecionadas = [];
 
-function escolherCarta(elemento, numero) {
-  if(escolhidas.length >= 3) return;
-  elemento.classList.add("virada");
-  escolhidas.push(numero);
+function virarCarta(carta, indice) {
+  if(selecionadas.length >= 3 || carta.classList.contains("virada")) return;
+  
+  carta.classList.add("virada");
+  selecionadas.push(indice);
 
-  if(escolhidas.length === 3) {
-    setTimeout(mostrarResultado, 1000);
+  if(selecionadas.length === 3) {
+    setTimeout(() => {
+      document.getElementById("resultado").innerHTML = `
+        <h3 style="color:#d4af37;margin-bottom:30px;">✦ Sua leitura completa ✦</h3>
+        <div style="font-size:1.5rem;line-height:2.2;text-align:left;max-width:800px;margin:0 auto;">
+          <p><strong>Passado:</strong> A Torre – Lições difíceis que te fortaleceram</p>
+          <p><strong>Presente:</strong> A Estrela – Esperança e cura no horizonte</p>
+          <p><strong>Futuro:</strong> O Mundo – Conclusão de ciclo com vitória e plenitude</p>
+        </div>
+        <p style="margin-top:50px;color:#d4af37;font-size:1.8rem;">
+          Obrigado pelo pagamento! Que os astros te abençoem ✨
+        </p>
+      `;
+    }, 1200);
   }
-}
-
-function mostrarResultado() {
-  document.getElementById("resultado").innerHTML = `
-    <h3>Sua leitura está pronta!</h3>
-    <p style="font-size:1.5rem;line-height:2;margin-top:30px;">
-      • Passado: <strong>A Torre</strong> – Mudanças bruscas que foram necessárias<br>
-      • Presente: <strong>A Imperatriz</strong> – Abundância e criatividade florescendo<br>
-      • Futuro: <strong>O Sol</strong> – Sucesso, alegria e clareza no caminho
-    </p>
-    <p style="margin-top:40px;color:#d4af37;font-size:1.6rem;">
-      Muito obrigado pelo pagamento! Que o universo te guie ✨
-    </p>
-  `;
 }
