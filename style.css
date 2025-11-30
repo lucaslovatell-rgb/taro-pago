@@ -1,132 +1,116 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:wght@700&display=swap');
-
 * { margin:0; padding:0; box-sizing:border-box; }
 body {
-  background: linear-gradient(135deg, #1a0033, #2d0066, #120026);
-  color: #e6e6ff;
   font-family: 'Cormorant Garamond', serif;
+  color: #e6d9ff;
   min-height: 100vh;
-  padding: 20px;
-  background-attachment: fixed;
-}
-.container { max-width: 1000px; margin: 0 auto; text-align: center; padding-top: 30px; }
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 3.8rem;
-  margin-bottom: 10px;
-  text-shadow: 0 0 30px rgba(255,255,255,0.4);
-}
-.subtitle { 
-  font-size: 1.4rem; 
-  margin-bottom: 40px; 
-  opacity: 0.9; 
-  font-weight: 300;
-}
-
-#question-box { margin-bottom: 50px; }
-#question {
-  padding: 18px 25px;
-  width: 70%;
-  max-width: 500px;
-  border: none;
-  border-radius: 50px;
-  font-size: 1.2rem;
-  outline: none;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-}
-#start, #new-reading {
-  padding: 18px 35px;
-  margin-left: 15px;
-  background: #ff9900;
-  color: #1a0033;
-  border: none;
-  border-radius: 50px;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 1.2rem;
-  transition: 0.3s;
-  box-shadow: 0 5px 20px rgba(255,153,0,0.4);
-}
-#start:hover, #new-reading:hover { 
-  background: #ffb84d; 
-  transform: translateY(-3px);
-}
-
-.deck {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  perspective: 1200px;
-  margin: 70px 0;
-}
-.card {
-  width: 150px;
-  height: 250px;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: all 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  transform-style: preserve-3d;
+  overflow-x: hidden;
   position: relative;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.7);
 }
-.back {
-  background: url('cards/back.jpg') center/cover no-repeat;
-}
-.card.flip { transform: rotateY(180deg); }
-.front {
-  position: absolute;
+
+/* Fundo místico */
+.background {
+  position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at center, #2a1b3d 0%, #0d0b1c 100%);
+  z-index: -3;
+}
+.stars {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: transparent url('https://i.ibb.co/0jQZrZc/stars.png') repeat;
+  animation: estrelas 120s linear infinite;
+  opacity: 0.6;
+  z-index: -2;
+}
+@keyframes estrelas { from { background-position: 0 0; } to { background-position: 1000px 1000px; } }
+
+/* Cabeçalho */
+header {
+  text-align: center;
+  padding: 60px 20px 40px;
+  position: relative;
+}
+header h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 4.5rem;
+  background: linear-gradient(90deg, #d4af37, #fff, #d4af37);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 30px rgba(212,175,55,0.5);
+}
+.subtitle {
+  font-size: 1.5rem;
+  margin-top: 15px;
+  opacity: 0.9;
+}
+
+/* Botões */
+.btn-mistico {
+  margin-top: 50px;
+  padding: 18px 40px;
+  font-size: 1.4rem;
+  background: linear-gradient(45deg, #8B5A96, #D4AF37);
+  border: none;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(139,90,150,0.6);
+  transition: all 0.4s;
+}
+.btn-mistico:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(212,175,55,0.6);
+}
+.preco { margin-top: 20px; font-size: 1.3rem; opacity: 0.8; }
+
+/* Cartas */
+#baralho {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 50px auto;
+  max-width: 1000px;
+  perspective: 1000px;
+}
+.carta {
+  width: 120px;
+  height: 180px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+  border: 3px solid #d4af37;
+}
+.carta:hover { transform: translateY(-15px) scale(1.05); box-shadow: 0 20px 40px rgba(212,175,55,0.5); }
+.frente { background: #0f0a1c url('https://i.ibb.co/0jQZrZc/back-card.jpg') center/cover; }
+.verso { 
+  background: white;
   backface-visibility: hidden;
   transform: rotateY(180deg);
-  border-radius: 15px;
-  overflow: hidden;
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  border-radius: 12px;
 }
-.front img { width: 100%; height: 100%; object-fit: cover; }
+.carta.virada { transform: rotateY(180deg); }
 
-#cards-display {
+#cartas-escolhidas {
   display: flex;
   justify-content: center;
   gap: 40px;
+  margin: 60px 0;
   flex-wrap: wrap;
-  margin: 50px 0;
 }
-#cards-display img {
-  width: 190px;
-  border-radius: 15px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-  border: 3px solid #ff9900;
-}
-.positions {
-  display: flex;
-  justify-content: center;
-  gap: 180px;
-  font-size: 1.6rem;
-  margin-bottom: 30px;
-  font-weight: bold;
-  text-shadow: 0 0 15px #ff9900;
-}
-#interpretation {
-  max-width: 900px;
+#resultado {
+  max-width: 800px;
   margin: 40px auto;
-  line-height: 2;
-  font-size: 1.35rem;
-  background: rgba(0,0,0,0.4);
-  padding: 40px;
+  padding: 30px;
+  background: rgba(20,10,40,0.6);
   border-radius: 20px;
-  backdrop-filter: blur(5px);
-}
-.hidden { display: none; }
-
-#pay-button {
-  background: #00ca9d !important;
-  margin: 30px auto !important;
-  font-size: 1.5rem !important;
-  padding: 20px 50px !important;
-}
-
-@media (max-width: 700px) {
-  .positions { gap: 30px; flex-direction: column; font-size: 1.3rem; }
-  #cards-display img { width: 140px; }
-  .card { width: 100px; height: 170px; }
-  h1 { font-size: 2.8rem; }
+  border: 1px solid #d4af37;
+  text-align: center;
+  font-size: 1.4rem;
+  line-height: 1.8;
 }
