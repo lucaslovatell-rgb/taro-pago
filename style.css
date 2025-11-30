@@ -1,4 +1,5 @@
 * { margin:0; padding:0; box-sizing:border-box; }
+
 body {
   font-family: 'Cormorant Garamond', serif;
   color: #e6d9ff;
@@ -8,18 +9,27 @@ body {
   background: radial-gradient(circle at center, #2a1b3d 0%, #0d0b1c 100%);
 }
 
-/* Fundo com estrelas animadas */
+/* Fundo místico com nebulosas e estrelas (sem imagem externa = nunca quebra) */
 .stars {
   position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: transparent url('https://i.ibb.co/4pXJ0kP/stars.png') repeat;
-  animation: estrelas 200s linear infinite;
-  opacity: 0.7;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(140, 100, 255, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(180, 120, 255, 0.35) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(200, 150, 255, 0.2) 0%, transparent 60%),
+    #0f0a1c;
+  background-size: 600px 600px, 800px 800px, 1000px 1000px, cover;
+  animation: nebulosa 25s ease-in-out infinite alternate;
+  opacity: 0.9;
   z-index: -1;
 }
-@keyframes estrelas { from { background-position: 0 0; } to { background-position: 1000px 1000px; } }
+@keyframes nebulosa {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(30px, -30px) rotate(1deg); }
+}
 
-/* Título dourado brilhante */
+/* Título dourado com brilho */
 header h1 {
   font-family: 'Cinzel', serif;
   font-size: 5.5rem;
@@ -30,7 +40,10 @@ header h1 {
   background-clip: text;
   color: transparent;
   text-shadow: 0 0 40px rgba(212,175,55,0.6);
+  animation: brilho 4s ease-in-out infinite;
 }
+@keyframes brilho { 0%, 100% { text-shadow: 0 0 40px rgba(212,175,55,0.6); } 50% { text-shadow: 0 0 60px rgba(212,175,55,0.9); } }
+
 .subtitle {
   text-align: center;
   font-size: 1.8rem;
@@ -54,8 +67,9 @@ header h1 {
 }
 .btn-mistico:hover {
   transform: translateY(-8px) scale(1.05);
-  box-shadow: 0 25px 60px rgba(212,175,55,0.7);
+  box-shadow: 0 25px 60px rgba(212,175,55,0.8);
 }
+
 .preco {
   text-align: center;
   margin-top: 25px;
@@ -63,8 +77,8 @@ header h1 {
   opacity: 0.8;
 }
 
-/* Responsivo rápido */
+/* Responsivo */
 @media (max-width: 600px) {
-  header h1 { font-size: 3.5rem; }
+  header h1 { font-size: 3.5rem; padding-top: 50px; }
   .btn-mistico { padding: 16px 35px; font-size: 1.4rem; }
 }
