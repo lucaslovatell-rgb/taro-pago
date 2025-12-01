@@ -23,9 +23,7 @@ function iniciarLeitura() {
     c.innerHTML = `
       <div class="carta-inner">
         <div class="frente"></div>
-        <div class="verso">
-          <img src="images/${nome}" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
-        </div>
+        <div class="verso"><img src="images/${nome}" loading="lazy"></div>
       </div>
     `;
     c.onclick = () => virarCarta(c);
@@ -37,20 +35,20 @@ function virarCarta(c) {
   if (document.querySelectorAll(".virada").length >= 3 || c.classList.contains("virada")) return;
   c.classList.add("virada");
   if (document.querySelectorAll(".virada").length === 3) {
-    setTimeout(mostrarResultado, 1300);
+    setTimeout(mostrarResultado, 1400);
   }
 }
 
 function mostrarResultado() {
   const viradas = document.querySelectorAll(".virada .verso img");
-  let html = `<h3 style="color:#d4af37;margin-bottom:40px">✦ Sua leitura completa ✦</h3>
-              <div style="display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin:40px 0">`;
-  viradas.forEach(img => html += `<img src="${img.src}" style="width:220px;border-radius:15px;box-shadow:0 0 40px #d4af37">`);
+  let html = `<h3 style="color:#d4af37;margin:50px 0">✦ Sua leitura completa ✦</h3>
+              <div style="display:flex;gap:30px;justify-content:center;flex-wrap:wrap">`;
+  viradas.forEach(i => html += `<img src="${i.src}" style="width:220px">`);
   html += `</div>
-           <p style="font-size:1.8rem;line-height:2.5;color:#e6d9ff;max-width:900px;margin:0 auto;text-align:center">
+           <p style="font-size:1.8rem;line-height:2.5;margin:50px auto;max-width:900px">
              <strong>Passado • Presente • Futuro</strong><br><br>
-             As cartas revelaram um caminho de luz e transformação para você.
+             As cartas revelaram um caminho de luz, cura e realização para você.
            </p>
-           <p style="color:#d4af37;font-size:2rem;margin-top:50px">Que os astros te guiem ✨</p>`;
+           <p style="color:#d4af37;font-size:2rem">Que os astros te abençoem ✨</p>`;
   document.getElementById("resultado").innerHTML = html;
 }
