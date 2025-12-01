@@ -7,12 +7,31 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- PROTEÇÃO + LIBERAÇÃO PRO DONO -->
+  <script>
+    // === LIBERAÇÃO AUTOMÁTICA PRA VOCÊ (DONO) ===
+    const acessoDono = (
+      // Quando você testa localmente ou no GitHub Pages antigo
+      window.location.hostname === "localhost" || 
+      window.location.hostname.includes("github.io") ||
+      // Quando você entra direto na Vercel (pra testar rápido)
+      window.location.hostname === "foxtaro.vercel.app"
+    );
+
+    // Se NÃO for o dono e NÃO veio do Mercado Pago → bloqueia
+    if (!acessoDono && !document.referrer.includes("mercadopago") && !document.referrer.includes("mpago.la")) {
+      alert("⚠️ Para acessar a leitura completa é necessário realizar o pagamento de R$ 29,90");
+      window.location.href = "https://foxtaro.vercel.app";
+    }
+  </script>
+
   <div id="leitura">
-    <h1 style="margin:60px 0 20px;color:#d4af37">Obrigado pelo pagamento! ✨</h1>
-    <h2 style="margin-bottom:40px">Concentre-se e escolha 3 cartas...</h2>
+    <h1 style="margin:60px 0 20px;color:#d4af37;font-size:3.5rem">Obrigado pelo pagamento! ✨</h1>
+    <h2 style="margin-bottom:50px;font-size:2rem">Concentre-se e escolha 3 cartas...</h2>
     <div id="baralho"></div>
     <div id="resultado"></div>
-    <button onclick="location.reload()" class="btn-mistico" style="margin:70px auto;display:block;padding:18px 50px">
+    <button onclick="location.reload()" class="btn-mistico" style="margin:70px auto;display:block;padding:18px 60px;font-size:1.4rem">
       Tirar novas cartas
     </button>
   </div>
