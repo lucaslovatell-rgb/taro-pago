@@ -4,27 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tarô Místico</title>
-  <link href="https://fonts.googleapis.com/css2?family=Georgia&family=Cinzel&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <div class="fundo-estrelado"></div>
-
-  <header>
+  <div id="intro">
     <h1>✦ Tarô Místico ✦</h1>
     <p class="subtitle">Descubra o que o destino reserva para você</p>
-  </header>
-
-  <div id="intro">
     <button onclick="iniciarLeitura()" class="btn-mistico">Iniciar Leitura Completa - R$ 29,90</button>
-    <p style="text-align:center;margin-top:20px;">Pagamento via Pix • Resultado na hora</p>
   </div>
 
-  <div id="leitura" style="display:none;">
-    <h2 style="text-align:center;margin:40px;">Concentre-se e escolha 3 cartas...</h2>
+  <div id="leitura" style="display:none">
+    <h2>Concentre-se e escolha 3 cartas...</h2>
     <div id="baralho"></div>
     <div id="resultado"></div>
+    <button onclick="location.reload()" class="btn-mistico" style="margin:50px auto;display:block">Nova Leitura</button>
   </div>
 
   <script src="script.js"></script>
