@@ -8,20 +8,16 @@
 </head>
 <body>
 
-  <!-- PROTEÇÃO + LIBERAÇÃO PRO DONO -->
+  <!-- PROTEÇÃO PRA CLIENTE + LIBERAÇÃO PRO DONO -->
   <script>
-    // === LIBERAÇÃO AUTOMÁTICA PRA VOCÊ (DONO) ===
     const acessoDono = (
-      // Quando você testa localmente ou no GitHub Pages antigo
       window.location.hostname === "localhost" || 
       window.location.hostname.includes("github.io") ||
-      // Quando você entra direto na Vercel (pra testar rápido)
-      window.location.hostname === "foxtaro.vercel.app"
+      window.location.hostname === "foxtaro.vercel.app"  // libera pro teu domínio
     );
 
-    // Se NÃO for o dono e NÃO veio do Mercado Pago → bloqueia
     if (!acessoDono && !document.referrer.includes("mercadopago") && !document.referrer.includes("mpago.la")) {
-      alert("⚠️ Para acessar a leitura completa é necessário realizar o pagamento de R$ 29,90");
+      alert("⚠️ Para acessar a leitura completa, realize o pagamento de R$ 29,90 primeiro!");
       window.location.href = "https://foxtaro.vercel.app";
     }
   </script>
